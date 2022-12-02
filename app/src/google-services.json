@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:79289878384:android:ce37d41372c1c44274b1b5",
         "android_client_info": {
-          "package_name": "com.example.yhgg_refactoring.Data.Response"
+          "package_name": "com.example.yhgg_refactoring"
         }
       },
       "oauth_client": [

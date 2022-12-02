@@ -1,4 +1,4 @@
-package com.example.yhgg_refactoring.Data.Response
+package com.example.yhgg_refactoring.data.response
 
 import org.junit.Test
 

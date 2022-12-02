@@ -1,10 +1,18 @@
 package com.example.yhgg_refactoring
 
-import com.google.firebase.FirebaseApp
+import com.example.yhgg_refactoring.di.AppModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
 
 class Application : android.app.Application() {
     override fun onCreate() {
         super.onCreate()
-        FirebaseApp.initializeApp(applicationContext)
+        startKoin {
+            androidLogger(Level.ERROR)
+            androidContext(this@Application)
+            modules(AppModule)
+        }
     }
 }
