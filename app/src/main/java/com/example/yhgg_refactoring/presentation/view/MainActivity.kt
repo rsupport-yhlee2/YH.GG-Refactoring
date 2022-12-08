@@ -18,13 +18,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.lifecycleOwner = this
+        binding.viewmodel = viewModel
         viewModel.summonerLiveData.observe(this){ summoner ->
             startActivity(Intent(this,SummonerInfoActivity::class.java).apply {
                 putExtra("summoner",summoner)
             })
         }
-        Handler().postDelayed({
-            viewModel.search("lyh123")
-        },1000)
     }
 }

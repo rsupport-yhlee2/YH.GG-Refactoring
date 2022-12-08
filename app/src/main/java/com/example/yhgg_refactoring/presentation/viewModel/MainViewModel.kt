@@ -12,14 +12,16 @@ import io.reactivex.schedulers.Schedulers
 class MainViewModel(
     private val repository: Repository
 ) : ViewModel() {
+
     private val _summonerLiveData: MutableLiveData<SummonerResponse> = MutableLiveData()
     val summonerLiveData = _summonerLiveData
 
     @SuppressLint("CheckResult")
     fun search(summonerName: String) {
         Log.e("search", summonerName)
-        val summoner = repository.getSummonerInfoByName(summonerName, Key.API_KEY)
-        summoner.doOnSuccess {
+        val singleSummoner = repository.getSummonerInfoByName(summonerName, Key.API_KEY)
+
+        singleSummoner.doOnSuccess {
             summonerLiveData.postValue(it)
         }.doOnError {
             Log.e("error", it.message.toString())

@@ -1,5 +1,6 @@
 package com.example.yhgg_refactoring.data.repository
 
+import com.example.yhgg_refactoring.data.DataProvider
 import com.example.yhgg_refactoring.data.response.LeagueEntryResponse
 import com.example.yhgg_refactoring.data.response.LeagueListResponse
 import com.example.yhgg_refactoring.data.response.MatchResponse
@@ -7,7 +8,9 @@ import com.example.yhgg_refactoring.data.response.SummonerResponse
 import io.reactivex.Single
 import yunho.app.lolapitest.lolAPI.lolAPIService
 
-class APIRepository(private val apiService: lolAPIService) : Repository {
+class APIRepository(
+    private val apiService: lolAPIService,
+) : Repository {
     override fun getSummonerInfoByName(
         SummonerName: String,
         APIKey: String

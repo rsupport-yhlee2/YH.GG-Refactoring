@@ -4,6 +4,7 @@ import com.example.yhgg_refactoring.data.DataProvider
 import com.example.yhgg_refactoring.data.repository.APIRepository
 import com.example.yhgg_refactoring.data.repository.Repository
 import com.example.yhgg_refactoring.presentation.viewModel.MainViewModel
+import com.example.yhgg_refactoring.presentation.viewModel.SummonerInfoViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
 
@@ -24,4 +25,5 @@ internal val AppModule = module {
 
     //viewModel
     single { MainViewModel(get()) }
+    single { SummonerInfoViewModel(get()) }
 }
