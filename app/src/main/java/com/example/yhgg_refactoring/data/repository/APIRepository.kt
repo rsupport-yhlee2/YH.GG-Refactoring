@@ -11,6 +11,8 @@ import yunho.app.lolapitest.lolAPI.lolAPIService
 class APIRepository(
     private val apiService: lolAPIService,
 ) : Repository {
+    private val match = DataProvider.provideMatchRetrofit(DataProvider.buildOkHttpClient())
+    private val matchService = match.create(lolAPIService::class.java)
     override fun getSummonerInfoByName(
         SummonerName: String,
         APIKey: String
@@ -35,10 +37,10 @@ class APIRepository(
         count: Int,
         APIKey: String
     ): Single<List<String>> {
-        return apiService.getMatchIdBypuuid(puuid, start, count, APIKey)
+        return matchService.getMatchIdBypuuid(puuid, start, count, APIKey)
     }
 
     override fun getMatchInfoByMatchID(MatchId: String, APIKey: String): Single<MatchResponse> {
-        return apiService.getMatchInfoByMatchID(MatchId, APIKey)
+        return matchService.getMatchInfoByMatchID(MatchId, APIKey)
     }
 }

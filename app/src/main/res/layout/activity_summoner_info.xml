@@ -12,6 +12,13 @@
         <variable
             name="summoner"
             type="com.example.yhgg_refactoring.data.response.SummonerResponse" />
+
+        <variable
+            name="league"
+            type="com.example.yhgg_refactoring.data.response.LeagueEntryResponse" />
+        <variable
+            name="match"
+            type="com.example.yhgg_refactoring.data.response.InfoResponse" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,6 +80,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/SummonerNameTextView"
                 app:layout_constraintTop_toTopOf="parent"
+                android:text="@{league.tier}"
                 tools:text="GOLD" />
 
             <TextView
@@ -81,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textSize="15sp"
+                android:text="@{league.queueType}"
                 app:layout_constraintEnd_toEndOf="@+id/TierImageView"
                 app:layout_constraintStart_toStartOf="@+id/TierImageView"
                 app:layout_constraintTop_toBottomOf="@id/TierImageView"
@@ -92,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
                 android:textSize="15sp"
+                android:text="@{league.rank}"
                 app:layout_constraintBottom_toBottomOf="@+id/RankTextView"
                 app:layout_constraintStart_toEndOf="@+id/RankTextView"
                 tools:text="III" />
@@ -121,6 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                level="@{league.wins}"
                 app:layout_constraintBottom_toBottomOf="@+id/wins"
                 app:layout_constraintStart_toEndOf="@+id/wins"
                 tools:text="50" />
@@ -140,6 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                level="@{league.losses}"
                 app:layout_constraintBottom_toBottomOf="@+id/loses"
                 app:layout_constraintStart_toEndOf="@+id/loses"
                 tools:text="50" />
@@ -171,6 +183,7 @@
             android:background="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            reItem="@{match.participants}"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/InfoView"

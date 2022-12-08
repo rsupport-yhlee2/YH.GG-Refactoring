@@ -7,6 +7,6 @@ data class InfoResponse(
     @SerializedName("gameMode") val gameMode: String,
     @SerializedName("gameType") val gameType: String,
     @SerializedName("queueId") val queueId: String,
-    @SerializedName("participants") val participants: List<ParticipantResponse>,
+    @SerializedName("participants") var participants: List<ParticipantResponse>,
     @SerializedName("gameEndTimestamp") val gameEndTimestamp: Long
 )

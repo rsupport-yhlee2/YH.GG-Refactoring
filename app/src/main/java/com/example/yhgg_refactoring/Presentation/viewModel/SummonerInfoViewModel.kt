@@ -1,6 +1,7 @@
 package com.example.yhgg_refactoring.presentation.viewModel
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,12 +25,14 @@ class SummonerInfoViewModel(
 
     @SuppressLint("CheckResult")
     fun getMatchIdByPuuid(puuid: String, id: String) {
+        Log.e("1","1")
         repository.getMatchIdBypuuid(puuid, 1, 20, Key.API_KEY).doOnSuccess { matchIds ->
+            Log.e("1","$matchIds")
             matchIds.map { matchId ->
                 repository.getMatchInfoByMatchID(matchId, Key.API_KEY).doOnSuccess {
                     val matchData = it.info.participants.filter { it.summonerName == id }
-                    _matchDataLiveData.value = matchData
-                }
+                    _matchDataLiveData.postValue(matchData)
+                }.subscribeOn(Schedulers.io()).subscribe()
             }
         }.doOnError { }.ignoreElement().subscribeOn(Schedulers.io()).subscribe()
     }

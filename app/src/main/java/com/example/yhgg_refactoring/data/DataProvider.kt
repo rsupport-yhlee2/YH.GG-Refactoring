@@ -1,6 +1,5 @@
 package com.example.yhgg_refactoring.data
 
-import com.example.yhgg_refactoring.Data.Network.lolAPIForMatchService
 import com.google.firebase.database.BuildConfig
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -18,9 +17,6 @@ object DataProvider {
     fun provideReference(database : FirebaseDatabase) = database.reference
     fun provideCenterAPIService(retrofit: Retrofit): lolAPIService =
         retrofit.create(lolAPIService::class.java)
-
-    fun provideMatchAPIService(retrofit: Retrofit): lolAPIForMatchService =
-        retrofit.create(lolAPIForMatchService::class.java)
 
     fun provideCenterRetrofit(
         okHttpClient: OkHttpClient,
